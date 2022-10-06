@@ -28,16 +28,20 @@ spec:
         envFrom:
         - configMapRef:
             name: env-config
+        - secretRef:
+            name: env-secret
+        - secretRef:
+            name: aws-secret
         env:
         - name: POSTGRES_USERNAME
           valueFrom:
-            configMapKeyRef:
-              name: env-config
+            secretKeyRef:
+              name: env-secret
               key: POSTGRES_USERNAME 
         - name: POSTGRES_PASSWORD
           valueFrom:
-            configMapKeyRef:
-              name: env-config
+            secretKeyRef:
+              name: env-secret
               key: POSTGRES_PASSWORD
         - name: POSTGRES_HOST
           valueFrom:

@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: udagram-reverseproxy
   labels:
+    service: udagram-reverseproxy
     app: udagram-reverseproxy
 spec:
   replicas: 1
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
       - name: udagram-reverseproxy
-        image: ekram321/reverseproxy:v3
+        image: ekram321/reverseproxy:v4
         imagePullPolicy: Always          
         resources:
           requests:
@@ -24,7 +25,7 @@ spec:
             cpu: "250m"
           limits:
             memory: "1024Mi"
-            cpu: "500m"       
+            cpu: "500m" 
         ports:
         - containerPort: 8080
       restartPolicy: Always
